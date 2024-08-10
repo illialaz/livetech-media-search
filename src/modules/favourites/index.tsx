@@ -11,9 +11,7 @@ export default function Favourites() {
 
   return (
     <Container maxWidth="md" sx={{ pt: 3 }}>
-      <Typography variant="h1" color="initial">
-        Favourites
-      </Typography>
+      <Typography variant="h1">Favourites</Typography>
       <Grid
         container
         spacing={2}

@@ -135,9 +135,7 @@ export default function Homepage() {
 
   return (
     <Container maxWidth="md" sx={{ pt: 3 }}>
-      <Typography variant="h1" color="initial">
-        Media search
-      </Typography>
+      <Typography variant="h1">Media search</Typography>
       <SearchBar
         media={media}
         search={search}
@@ -147,7 +145,7 @@ export default function Homepage() {
       <Box sx={{ pt: 2, position: 'relative' }}>
         {search && (
           <Box sx={{ display: 'flex' }}>
-            <Typography variant="h4" color="initial" display="inline">
+            <Typography variant="h4" display="inline">
               {resultCount > 0
                 ? 'Results for '
                 : `${firstLoading ? 'Searching for ' : 'Nothing found for '}`}
