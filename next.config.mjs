@@ -7,28 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'itechart-bsn.s3.amazonaws.com',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'staging.itechart.com',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'dev.itechart.com',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'ventionteams.com',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'seal-newyork.bbb.org',
-        pathname: '**',
+        hostname: '**',
       },
     ],
     deviceSizes: [
@@ -48,6 +27,15 @@ const nextConfig = {
         resource.request = resource.request.replace(/^node:/, '');
       }),
     );
+
+    const rules = config.module.rules.find((rule) =>
+      Array.isArray(rule.oneOf),
+    ).oneOf;
+    rules.unshift({
+      test: /\.svg$/,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
 
     return config;
   },

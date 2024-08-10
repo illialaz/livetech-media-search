@@ -1,8 +1,11 @@
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
 
-const roboto = Roboto({ weight: '300' });
+import Header from '@/components/header';
+import StoreProvider from '@/providers/store-provider';
+import theme from '@/theme';
 
 export const metadata: Metadata = {
   title: 'Livetech Media Search',
@@ -17,8 +20,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+      <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </head>
+      <body>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <StoreProvider>
+              <>
+                <CssBaseline enableColorScheme />
+                <Header />
+                {children}
+              </>
+            </StoreProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
