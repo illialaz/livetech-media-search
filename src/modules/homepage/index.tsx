@@ -187,7 +187,7 @@ export default function Homepage() {
           <Box
             sx={{
               position: 'absolute',
-              bottom: '15%',
+              bottom: '100vh',
               width: '100%',
             }}
             ref={dataFetcherElem}
